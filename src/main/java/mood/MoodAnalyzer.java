@@ -11,9 +11,7 @@ public class MoodAnalyzer {
 	}
 
 	public MoodAnalyzer(String s) {
-		if(s == null) {
-			message = "happy";
-		}else message = s;
+		message = s;
 	}
 
 	public static void main(String[] args) {
@@ -22,14 +20,13 @@ public class MoodAnalyzer {
 		Scanner sc = new Scanner(System.in);
 		try{
 			String input = sc.nextLine();
-			if(input == null) {
-				throw new NullInput();
+			if(input.isEmpty()) {
+				throw new MoodAnalysisException();
 			}
 		obj = new MoodAnalyzer(input);
 		}
-		catch(Exception e) {
-		obj = new MoodAnalyzer();
-			
+		catch(MoodAnalysisException e) {
+			obj = new MoodAnalyzer();
 			System.out.println(e.getMessage());
 		}
 		System.out.println(obj.analyseMood());
@@ -53,7 +50,7 @@ public class MoodAnalyzer {
 	}
 }
 
-class NullInput extends Exception{
+class MoodAnalysisException extends Exception{
 	@Override
 	public String getMessage() {
 		return "Message is Empty";
