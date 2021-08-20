@@ -28,4 +28,10 @@ public class MoodAnalyzerTest {
 		assertEquals("HAPPY",c.analyseMood());
 		
 	}
+	@Test
+	public void TCForConstructorWithNullMessage() {
+		MoodAnalyzer c = new MoodAnalyzer();
+		assertEquals("HAPPY",c.analyseMood());
+		
+	}
 }
